@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Face Detection & Filters</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- face-api.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.7.0/dist/tf.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script defer src="filterHistory.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <h1>Webcam Face Detection & Filters</h1>
+    <div class="main-content">
+        <div class="left-section">
+             
+            <div class="container">
+                <video id="video" width="640" height="480" autoplay muted></video>
+                <canvas id="overlay" width="640" height="480"></canvas>
+            </div>
+            <div class="controls">
+                <button id="startCamera" class="start-btn" disabled>Start Camera</button>
+                <select id="filter" class="form-select">
+                    <option value="none">No Filter</option>
+                    <option value="grayscale">Grayscale</option>
+                    <option value="sepia">Sepia</option>
+                    <option value="invert">Invert</option>
+                    <option value="red">Red Tint</option>
+                    <option value="blue">Blue Tint</option>
+                    <option value="green">Green Tint</option>
+                    <option value="vintage">Vintage</option>
+                    <option value="blur">Blur</option>
+                    <option value="pixelate">Pixelate</option>
+                    <option value="mirror">Mirror</option>
+                    <option value="neon">Neon Glow</option>
+                    <option value="rainbow">Rainbow</option>
+                    <option value="posterize">Posterize</option>
+                    <option value="emboss">Emboss</option>
+                    <option value="sketch">Sketch</option>
+                    <option value="warm">Warm Tone</option>
+                    <option value="cool">Cool Tone</option>
+                </select>
+                <div class="button-controls">
+                    <button id="captureBtn" class="capture-btn">📸 Capture Photo</button>
+                    <button id="downloadBtn" class="download-btn">�� Download</button>
+                </div>
+                <button id="logout" class="logout-btn">Logout</button>
+            </div>
+        </div>
+        <div id="filter-history" class="filter-history">
+            <h2 class="history-header">Recent Filters</h2>
+            <ul class="filter-list">
+                <li class="filter-item">
+                    <span class="filter-name" data-filter="neon">Neon Glow</span>
+                    <span class="filter-timestamp">Just now</span>
+                </li>
+                <li class="filter-item">
+                    <span class="filter-name" data-filter="rainbow">Rainbow</span>
+                    <span class="filter-timestamp">2 mins ago</span>
+                </li>
+                <li class="filter-item">
+                    <span class="filter-name" data-filter="sketch">Sketch</span>
+                    <span class="filter-timestamp">5 mins ago</span>
+                </li>
+                <li class="filter-item">
+                    <span class="filter-name" data-filter="warm">Warm Tone</span>
+                    <span class="filter-timestamp">10 mins ago</span>
+                </li>
+                <li class="filter-item">
+                    <span class="filter-name" data-filter="cool">Cool Tone</span>
+                    <span class="filter-timestamp">15 mins ago</span>
+                </li>
+            </ul>
+        </div>
+        <div class="photo-gallery">
+            <h2 class="gallery-header">Recent Photos</h2>
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <!-- Photos will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
